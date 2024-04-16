@@ -40,7 +40,7 @@ const App = () => {
           setIsOpen(false);
           alanBtn().playText('Closing the instructions.');
         }
-        // Add more commands as needed
+        
       },
     });
   }, []);

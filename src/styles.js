@@ -1,6 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
+  body: {
+    fontFamily: "Ubuntu",
+    fontWeight: 500,
+    fontStyle: 'normal',
+  },
   footer: {
     textAlign: 'center',
     position: 'fixed',

@@ -11,6 +11,7 @@ export default makeStyles({
     padding: '10%',
     borderRadius: 10,
     color: 'white',
+    fontFamily: 'Ubuntu'
   },
   infoCard: {
     display: 'flex', flexDirection: 'column', textAlign: 'center',
