@@ -48,7 +48,7 @@ const App = () => {
   return (
     <div>
      <div className={classes.logoContainer}>
-        {/* Logo and name side by side */}
+    
         <img src={logo} alt="Harmony logo" style={{ width: '150px', height: '100px', marginTop: '10px', alignItems: 'center' }} />
        
       </div>
