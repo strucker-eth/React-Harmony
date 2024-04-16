@@ -1,8 +1,5 @@
 #root, html, body {
     height: 100vh;
-    fontFamily: "Ubuntu";
-    fontWeight: 500;
-    fontStyle: 'normal';
 }
 
 body {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Typography } from '@material-ui/core';
 
 import alanBtn from '@alan-ai/alan-sdk-web';
 
@@ -14,22 +15,21 @@ const App = () => {
 
   useEffect(() => {
     alanBtn({
-      key: 'e696dea14cc2f189f6bdc75e50d657342e956eca572e1d8b807a3e2338fdd0dc/stage', // Replace with your actual Alan AI key
+      key: 'e696dea14cc2f189f6bdc75e50d657342e956eca572e1d8b807a3e2338fdd0dc/stage', 
       onCommand: ({ command, data }) => {
         if (command === 'control') {
-          // Interface with HarmonyCard logic
-          // For example, if the HarmonyCard components are controlled via state:
+          
           switch (data.device) {
             case 'lights':
-              // Call a function or set state to control lights
+             
               break;
             case 'climate':
-              // Call a function or set state to adjust climate
+             
               break;
             case 'security':
-              // Call a function or set state to activate security system
+              
               break;
-            // Add additional cases for other devices
+           
             default:
               alanBtn().playText('Sorry, I did not understand that command.');
           }
@@ -47,13 +47,18 @@ const App = () => {
 
   return (
     <div>
-      <div className={classes.logoContainer}>
-        {/* You can add interactive voice command instructions or other relevant information here */}
-        <img src={logo} className={classes.alanLogo} alt="Harmony logo" />
+     <div className={classes.logoContainer}>
+        {/* Logo and name side by side */}
+        <img src={logo} alt="Harmony logo" style={{ width: '150px', height: '100px', marginTop: '10px', alignItems: 'center' }} />
+       
       </div>
+      {/* Tagline below logo and name */}
+      <Typography variant="subtitle1" style={{ textAlign: 'center', margin: '20px 0', fontWeight: 'bold' }}>
+  Welcome to React Harmony, Click Chat to Start Managing your home.
+</Typography>
+
       <HarmonyCards services={services} />
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
-      {/* Footer or additional components can go here */}
     </div>
   );
 };

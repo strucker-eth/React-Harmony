@@ -15,6 +15,7 @@ export default makeStyles({
     flexDirection: 'column',
     justifyContent: 'space-between',
     borderBottom: '10px solid white',
+    fontFamily:'Ubuntu',
   },
   activeCard: {
     borderBottom: '10px solid #22289a',
