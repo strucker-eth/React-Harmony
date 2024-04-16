@@ -1,43 +1,46 @@
 import React, { useState, useEffect } from 'react';
-import { Typography } from '@material-ui/core';
-import wordsToNumbers from 'words-to-numbers';
+
 import alanBtn from '@alan-ai/alan-sdk-web';
 
-import logo from './images/logo.png';
-import { NewsCards, Modal } from './components';
+import HarmonyCards from './components/HarmonyCards/HarmonyCards'; 
+import Modal from './components/Modal/Modal'; 
 import useStyles from './styles';
+import services from './services'; 
+import logo from './images/logo.png';
 
 const App = () => {
-  const [activeArticle, setActiveArticle] = useState(0);
-  const [newsArticles, setNewsArticles] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-
   const classes = useStyles();
 
   useEffect(() => {
     alanBtn({
-      key: '64370f4c903e66c5b517887fefa45c1b2e956eca572e1d8b807a3e2338fdd0dc/stage',
-      onCommand: ({ command, articles, number }) => {
-        if (command === 'newHeadlines') {
-          setNewsArticles(articles);
-          setActiveArticle(-1);
+      key: 'e696dea14cc2f189f6bdc75e50d657342e956eca572e1d8b807a3e2338fdd0dc/stage', // Replace with your actual Alan AI key
+      onCommand: ({ command, data }) => {
+        if (command === 'control') {
+          // Interface with HarmonyCard logic
+          // For example, if the HarmonyCard components are controlled via state:
+          switch (data.device) {
+            case 'lights':
+              // Call a function or set state to control lights
+              break;
+            case 'climate':
+              // Call a function or set state to adjust climate
+              break;
+            case 'security':
+              // Call a function or set state to activate security system
+              break;
+            // Add additional cases for other devices
+            default:
+              alanBtn().playText('Sorry, I did not understand that command.');
+          }
         } else if (command === 'instructions') {
           setIsOpen(true);
-        } else if (command === 'highlight') {
-          setActiveArticle((prevActiveArticle) => prevActiveArticle + 1);
-        } else if (command === 'open') {
-          const parsedNumber = number.length > 2 ? wordsToNumbers((number), { fuzzy: true }) : number;
-          const article = articles[parsedNumber - 1];
-
-          if (parsedNumber > articles.length) {
-            alanBtn().playText('Please try that again...');
-          } else if (article) {
-            window.open(article.url, '_blank');
-            alanBtn().playText('Opening...');
-          } else {
-            alanBtn().playText('Please try that again...');
-          }
+          alanBtn().playText('Here are the instructions.');
+        } else if (command === 'closeModal') {
+          setIsOpen(false);
+          alanBtn().playText('Closing the instructions.');
         }
+        // Add more commands as needed
       },
     });
   }, []);
@@ -45,26 +48,12 @@ const App = () => {
   return (
     <div>
       <div className={classes.logoContainer}>
-        {newsArticles.length ? (
-          <div className={classes.infoContainer}>
-            <div className={classes.card}><Typography variant="h5" component="h2">Try saying: <br /><br />Open article number [4]</Typography></div>
-            <div className={classes.card}><Typography variant="h5" component="h2">Try saying: <br /><br />Go back</Typography></div>
-          </div>
-        ) : null}
-        <img src="https://alan.app/voice/images/previews/preview.jpg" className={classes.alanLogo} alt="logo" />
+        {/* You can add interactive voice command instructions or other relevant information here */}
+        <img src={logo} className={classes.alanLogo} alt="Harmony logo" />
       </div>
-      <NewsCards articles={newsArticles} activeArticle={activeArticle} />
+      <HarmonyCards services={services} />
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
-      {!newsArticles.length ? (
-        <div className={classes.footer}>
-          <Typography variant="body1" component="h2">
-            Created by
-            <a className={classes.link} href="https://www.linkedin.com/in/adrian-hajdin/"> Adrian Hajdin</a> -
-            <a className={classes.link} href="http://youtube.com/javascriptmastery"> JavaScript Mastery</a>
-          </Typography>
-          <img className={classes.image} src={logo} height="50px" alt="JSMastery logo" />
-        </div>
-      ) : null}
+      {/* Footer or additional components can go here */}
     </div>
   );
 };

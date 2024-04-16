@@ -1,13 +1,25 @@
-# Voice Controlled React News Application - Alan AI Voice Assistant
+## React Harmony Application
 
-### [Live Site](https://alan-news-app.netlify.app/)
+### Description
+React Harmony is a home automation app that allows users to control their home devices with voice commands. It integrates AI to provide a seamless interaction experience, enabling control over lighting, climate, and security systems.
 
-![Voice Controlled React News Application](https://i.ibb.co/SVyK6Nh/Screenshot-2020-08-03-at-21-24-23.png)
+### Setup
+To set up the React Harmony app, follow these steps:
 
-## Introduction
-This is a code repository for the corresponding video tutorial. 
+1. Navigate to the project directory:
+   ```bash
+   cd react-harmony
+   ```
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the application:
+   ```bash
+   npm start
+   ```
 
-In this video, we're going to build a Conversational Voice Controlled React News Application using Alan AI. Alan AI is a revolutionary speech recognition software that allows you to add voice capabilities to your applications. It allows you to control absolutely everything in the app using your voice. Another huge benefit is that it's extremely easy to integrate it. We'll do it together in this video and afterward, you'll be able to create your own voice-controlled apps.  
+After these steps, the app should be running on your local server and accessible via a web browser.
 
-Setup:
-- run ```npm i && npm start``` to start development server
+---
+
