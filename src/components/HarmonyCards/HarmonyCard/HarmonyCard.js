@@ -10,7 +10,7 @@ const HarmonyCard = ({ service: { title, description, image }, i }) => {
     <Card className={classes.card}>
       <CardContent>
         <Typography className={classes.title} gutterBottom variant="h5" component="h2">{title}</Typography>
-        <img src={image} alt={title} className={classes.image} />
+        
         <Typography variant="body2" color="textSecondary" component="p">{description}</Typography>
       </CardContent>
     </Card>
