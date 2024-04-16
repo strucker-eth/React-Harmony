@@ -1,4 +1,3 @@
-// NewsCards.js for Harmony AI App
 import React from 'react';
 import { Grid, Grow } from '@material-ui/core';
 
